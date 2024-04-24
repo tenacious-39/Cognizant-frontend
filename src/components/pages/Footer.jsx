@@ -69,7 +69,7 @@ function Footer() {
             </div>
 
             <div className='footer-end-section'>
-                <p className="text-center text-white">© 2024 Vitacure Labs. All rights reserved.</p>
+                <p style={{ margin: 0, paddingBottom: "5px" }} className="text-center text-white">© 2024 Vitacure Labs. All rights reserved.</p>
             </div>
 
         </div>

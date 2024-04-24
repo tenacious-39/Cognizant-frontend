@@ -5,7 +5,7 @@ import Divider from '@mui/material/Divider';
 function Landingpage() {
     return (
         <>
-            <div className="card shadow landing-page">
+            <div className="landing-page">
                 <Navbar />
                 <Divider className="navbar-divider" />
                 <Home />

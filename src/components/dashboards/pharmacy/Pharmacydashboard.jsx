@@ -5,6 +5,11 @@ import Allorders from "./Allorders";
 import Editprofile from "./Editprofile";
 import Placeorder from "./Placeorder";
 import axios from "axios";
+import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
+import EditRoundedIcon from '@mui/icons-material/EditRounded';
+import ListRoundedIcon from '@mui/icons-material/ListRounded';
+import ShoppingCartRoundedIcon from '@mui/icons-material/ShoppingCartRounded';
+
 
 function Pharmacydashboard({ handleLogout }) {
 
@@ -13,7 +18,6 @@ function Pharmacydashboard({ handleLogout }) {
         if (email !== null) {
             axios.get(`http://localhost:8765/pharmacy-service/pharmacy/byEmail/${email}`)
                 .then((res) => {
-                    console.log(res.data.data.pharmaId);
                     const pharmaId = res.data.data.pharmaId;
                     sessionStorage.setItem("pharmaId", pharmaId);
                 })
@@ -44,20 +48,30 @@ function Pharmacydashboard({ handleLogout }) {
                         borderBottomLeftRadius: "2px"
                     }}>
                         <button className="btn btn-primary" value="1"
-                            onClick={handleClick}>Place Order</button>
+                            onClick={handleClick}>
+                            <ShoppingCartRoundedIcon className="mr-1" />
+                            Place Order</button>
                     </div>
                     <div className="dashboard-card-heading-tab">
                         <button className="btn btn-primary" value="2"
-                            onClick={handleClick}>All Orders</button>
+                            onClick={handleClick}>
+                            <ListRoundedIcon className="mr-1" />
+                            All Orders</button>
                     </div>
                     <div className="dashboard-card-heading-tab">
                         <button className="btn btn-primary" value="3"
-                            onClick={handleClick}>Edit Profile</button>
+                            onClick={handleClick}>
+                            Edit Profile
+                            <EditRoundedIcon className="ml-1" />
+                        </button>
                     </div>
 
                     <div className="dashboard-card-heading-tab ml-auto">
                         <button className="btn btn-primary logout-btn"
-                            onClick={handleLogout}>Logout</button>
+                            onClick={handleLogout}>
+                            Logout
+                            <LogoutRoundedIcon />
+                        </button>
                     </div>
                 </div>
 

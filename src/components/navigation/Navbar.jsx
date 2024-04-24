@@ -1,3 +1,4 @@
+import logoimg from "../../assets/images/vitacureLogo.png";
 import { Link } from "react-router-dom";
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 import CategoryRoundedIcon from '@mui/icons-material/CategoryRounded';
@@ -34,58 +35,60 @@ function Navbar() {
     }
 
     return (
-        <>
-            <nav className="navbar navbar-expand-lg navbar-light bg-light roboto-font-medium">
-                <Link className="navbar-brand" to="/">Vitacure Labs</Link>
-                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
-                </button>
+        <nav className="navbar navbar-expand-lg navbar-light bg-light roboto-font-medium">
+            <Link className="navbar-brand" to="/">
+                <img src={logoimg} alt="..." height="40px" style={{
+                    marginRight: "2px"
+                }} />
+            </Link>
+            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span className="navbar-toggler-icon"></span>
+            </button>
 
-                <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul className="navbar-nav ml-auto">
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/">
-                                <button type="button" className="btn btn-link">
-                                    <HomeRoundedIcon sx={{ fontSize: 20 }} />
-                                    Home
-                                </button>
-                            </Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/products">
-                                <button type="button" className="btn btn-link">
-                                    <CategoryRoundedIcon sx={{ fontSize: 20 }} />
-                                    Our Products
-                                </button>
-                            </Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/about">
-                                <button type="button" className="btn btn-link">
-                                    <InfoRoundedIcon sx={{ fontSize: 20 }} />
-                                    About Us
-                                </button>
-                            </Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/contact">
-                                <button type="button" className="btn btn-link navbar-btn">
-                                    <ConnectWithoutContactRoundedIcon sx={{ fontSize: 20 }} />
-                                    Contact Us
-                                </button>
-                            </Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link" to={getLoginRoute()}>
-                                <button type="button" className="btn btn-primary login-btn">
-                                    {isLoggedIn ? "Dashboard" : "Login"} <AccountCircleRoundedIcon />
-                                </button>
-                            </Link>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </>
+            <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul className="navbar-nav ml-auto">
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/">
+                            <button type="button" className="btn btn-link">
+                                <HomeRoundedIcon sx={{ fontSize: 20 }} />
+                                Home
+                            </button>
+                        </Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/products">
+                            <button type="button" className="btn btn-link">
+                                <CategoryRoundedIcon sx={{ fontSize: 20 }} />
+                                Our Medicines
+                            </button>
+                        </Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/about">
+                            <button type="button" className="btn btn-link">
+                                <InfoRoundedIcon sx={{ fontSize: 20 }} />
+                                About Us
+                            </button>
+                        </Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/contact">
+                            <button type="button" className="btn btn-link navbar-btn">
+                                <ConnectWithoutContactRoundedIcon sx={{ fontSize: 20 }} />
+                                Contact Us
+                            </button>
+                        </Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to={getLoginRoute()}>
+                            <button type="button" className="btn btn-primary login-btn">
+                                {isLoggedIn ? "Dashboard" : "Login"} <AccountCircleRoundedIcon />
+                            </button>
+                        </Link>
+                    </li>
+                </ul>
+            </div>
+        </nav>
     );
 }
 

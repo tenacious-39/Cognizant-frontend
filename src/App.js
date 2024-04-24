@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 
 import React, { useEffect, useState } from 'react';
@@ -11,9 +10,13 @@ import Loginpage from './components/pages/Loginpage';
 import Footer from './components/pages/Footer';
 import Signup from './components/pages/Signup';
 import Pharmacydashboard from './components/dashboards/pharmacy/Pharmacydashboard';
+import Doctordashboard from './components/dashboards/doctor/Doctordashboard';
+import Mrdashboard from './components/dashboards/mr/Mrdashboard';
+import Products from './components/pages/Products';
 
 function App() {
   const navigateTo = useNavigate();
+  // eslint-disable-next-line
   const [user, setUser] = useState();
   const [loggedIn, setLoggedIn] = useState(false);
   useEffect(() => {
@@ -40,18 +43,30 @@ function App() {
   }, [loggedIn]);
 
   const handleLogout = () => {
-    console.log("Handing log out")
+    localStorage.removeItem("Authorization");
+    sessionStorage.removeItem("username");
+    if (sessionStorage.getItem("role")) {
+      sessionStorage.removeItem("role");
+    }
+    if (sessionStorage.getItem("mrId")) sessionStorage.removeItem("mrId");
+    if (sessionStorage.getItem("pharmaId")) sessionStorage.removeItem("pharmaId");
+    if (sessionStorage.getItem("doctorId")) sessionStorage.removeItem("doctorId");
+    setLoggedIn(false);
+    navigateTo("/login");
   }
 
   return (
     <div className="App container-fluid">
       <Routes>
         <Route path="/" element={<Landingpage />} />
+        <Route path="/products" element={<Products />} />
         <Route path="/about" element={<Aboutus />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={loggedIn ? <Navigate to="/" /> : <Loginpage setLoggedIn={setLoggedIn} />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/pharmacy/dashboard" element={<Pharmacydashboard handleLogout={handleLogout} />} />
+        <Route path="/doctor/dashboard" element={<Doctordashboard handleLogout={handleLogout} />} />
+        <Route path="/mr/dashboard" element={<Mrdashboard handleLogout={handleLogout} />} />
       </Routes>
       <Footer />
     </div>

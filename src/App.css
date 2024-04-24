@@ -47,20 +47,15 @@
 
 
 /* Landing Page */
-.landing-page {
-  padding-bottom: 0.4rem;
-  height: 95vh;
+.third-section {
+  background-color: #282B30;
+  height: 490px;
 }
 
-.homepage {
-  background-image: url("./assets/images/medical_care.svg");
-  background-repeat: no-repeat;
-  background-position: right 10% bottom 2%;
-  height: 85vh;
-}
-
-.homepage-left-panel {
-  background-color: aliceblue;
+.third-section-col {
+  margin-top: 3rem;
+  margin-left: 1rem;
+  height: 300px;
 }
 
 /*About us page */
@@ -147,7 +142,7 @@
 
 /* Footer Section */
 .footer {
-  height: 18.5rem;
+  /* height: 18.5rem; */
   background-color: #043CAA;
   padding-top: 1rem;
   padding-left: 2rem;
@@ -216,7 +211,7 @@
 
 .dashboard-card-heading-tab .logout-btn {
   border: 1px solid;
-  border-radius: 20px;
+  border-radius: 5px;
 }
 
 .logout-btn {

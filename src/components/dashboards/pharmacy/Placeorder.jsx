@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import SaveRoundedIcon from '@mui/icons-material/SaveRounded';
 import { toast, Toaster } from "react-hot-toast";
 import ordermedicine from "../../../assets/images/place-order.jpg";
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 function Placeorder() {
 
@@ -21,6 +21,12 @@ function Placeorder() {
 
     function handlePlaceOrder(event) {
         event.preventDefault();
+
+        if (quantity === 0) {
+            toast.error("Quantity must be greater than 0!!");
+            return;
+        }
+
         axios.post('http://localhost:8765/pharmacy-service/pharmacy/place-order',
             {
                 medicineName: name,
@@ -77,8 +83,8 @@ function Placeorder() {
                         justifyContent: "right"
                     }}
                         onClick={handlePlaceOrder}>
-                        <SaveRoundedIcon />
-                        Save
+                        <ShoppingCartIcon />
+                        Place Order
                     </button>
                 </div>
             </form >

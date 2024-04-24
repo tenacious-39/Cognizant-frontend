@@ -1,15 +1,15 @@
 import React from "react";
-import Navbar from "../navigation/Navbar";
+import Firstcarasouel from "./Firstcarasouel";
+import Secondsection from "./Secondsection";
+import Thirdsection from "./Thirdsection";
 
 function Home() {
     return (
-        <div className="homepage mt-3">
-            <div className="row">
-                <div className="col homepage-left-panel">
-                    <h1>Homepage</h1>
-                </div>
-                <div className="col"></div>
-            </div>
+        <div className="homepage">
+            <Firstcarasouel />
+            <Secondsection />
+            <Thirdsection />
+            {/* <Fourthsection /> */}
         </div>
     );
 }

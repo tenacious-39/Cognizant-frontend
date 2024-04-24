@@ -5,6 +5,7 @@ import LoginRoundedIcon from '@mui/icons-material/LoginRounded';
 import axios from "axios";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { toast, Toaster } from "react-hot-toast";
 
 
 function Loginpage(props) {
@@ -20,11 +21,16 @@ function Loginpage(props) {
         })
             .then((response) => {
                 if (response.data.success === true) {
-                    localStorage.setItem("Authorization", response.data.token);
+                    const token = "Bearer " + response.data.token;
+                    localStorage.setItem("Authorization", token);
+                    toast.success("Logged In Successfully!");
                     props.setLoggedIn(true);
                 }
             })
             .catch((err) => {
+                if (err.response.data.message === "Bad credentials") {
+                    toast.error("Invalid username / password");
+                }
                 console.error(err);
             });
     }
@@ -64,6 +70,10 @@ function Loginpage(props) {
                     </div>
                 </div>
             </div>
+            <Toaster
+                position="top-center"
+                reverseOrder={false}
+            />
         </div>
     );
 }
