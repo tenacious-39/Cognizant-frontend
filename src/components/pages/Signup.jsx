@@ -5,6 +5,7 @@ import InputIcon from '@mui/icons-material/Input';
 import axios from "axios";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { toast, Toaster } from "react-hot-toast";
 
 function Signup() {
 
@@ -14,8 +15,26 @@ function Signup() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
+    function ValidateEmail(eamil) {
+        var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        if (email.match(validRegex)) return true;
+        return false;
+    }
+
     function handleLogin(event) {
         event.preventDefault();
+
+        const isValidEmail = ValidateEmail(email);
+        if (email && isValidEmail === false) {
+            toast.error("Please enter valid Email");
+            return;
+        }
+
+        if (password.length < 5) {
+            toast.error("Password length must be at least 5");
+            return;
+        }
+
         axios.post("http://localhost:8765/auth-service/auth/signup", {
             username: email,
             password: password,
@@ -77,6 +96,10 @@ function Signup() {
                     </div>
                 </div>
             </div >
+            <Toaster
+                position="top-center"
+                reverseOrder={false}
+            />
         </div >
     );
 }

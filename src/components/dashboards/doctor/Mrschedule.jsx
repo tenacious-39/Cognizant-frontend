@@ -20,7 +20,7 @@ function Mrschedule() {
         if (doctorId !== null) {
             axios.get(`http://localhost:8765/doctor-service/schedule/byDoctor/${doctorId}`)
                 .then((res) => {
-                    // console.log(res.data);
+                    console.log(res.data);
                     setSchedules(res.data);
                 })
                 .catch((err) => console.error(err));

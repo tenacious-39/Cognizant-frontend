@@ -13,6 +13,7 @@ import Pharmacydashboard from './components/dashboards/pharmacy/Pharmacydashboar
 import Doctordashboard from './components/dashboards/doctor/Doctordashboard';
 import Mrdashboard from './components/dashboards/mr/Mrdashboard';
 import Products from './components/pages/Products';
+import Admindashboard from './components/dashboards/admin/Admindashboard';
 
 function App() {
   const navigateTo = useNavigate();
@@ -67,6 +68,7 @@ function App() {
         <Route path="/pharmacy/dashboard" element={<Pharmacydashboard handleLogout={handleLogout} />} />
         <Route path="/doctor/dashboard" element={<Doctordashboard handleLogout={handleLogout} />} />
         <Route path="/mr/dashboard" element={<Mrdashboard handleLogout={handleLogout} />} />
+        <Route path="/admin/dashboard" element={<Admindashboard handleLogout={handleLogout} />} />
       </Routes>
       <Footer />
     </div>
